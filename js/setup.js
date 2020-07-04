@@ -20,7 +20,6 @@ firstPersonCamera.keysDown = [];
 firstPersonCamera.attachControl(canvas);
 firstPersonCamera.minZ = 0.05;
 
-
 var player = BABYLON.MeshBuilder.CreateSphere('player',{diameterY:2}, scene);
 player.position.y=2;
 player.physicsImpostor = new BABYLON.PhysicsImpostor(player, BABYLON.PhysicsImpostor.SphereImpostor, {mass:1,restitution:0,friction:0.5}, scene);
@@ -35,8 +34,10 @@ player.physicsImpostor.executeNativeFunction(function (world, body) {
   body.updateMassProperties();
 });
 player.visibility = 0;
+player.isPickable = false;
 var jumpCheck = BABYLON.MeshBuilder.CreateCylinder('jumpCheck',{diameter:0.9,height:0.2}, scene);
 jumpCheck.visibility = 0;
+jumpCheck.isPickable = false;
 
 var mats = [];
 for(let i=0;i<=4;i++){
@@ -61,15 +62,18 @@ var world=[];
 world.push(BABYLON.MeshBuilder.CreateGround('ground',{width:300,height:50},scene));
 world[0].material = mats[0];
 world[0].physicsImpostor = new BABYLON.PhysicsImpostor(world[0],BABYLON.PhysicsImpostor.BoxImpostor,{mass:0,restitution:0.5},scene);
+world[0].isPickable = false;
 world.push(BABYLON.MeshBuilder.CreateGround('sand',{width:300,height:200},scene));
 world[1].material = mats[1];
 world[1].position = new BABYLON.Vector3(0,-14.95,123.7);
 world[1].rotation.x=0.15;
 world[1].physicsImpostor = new BABYLON.PhysicsImpostor(world[1],BABYLON.PhysicsImpostor.BoxImpostor,{mass:0,restitution:0},scene);
+world[1].isPickable = false;
 
 world.push(new BABYLON.MeshBuilder.CreateBox('water',{width:300,height:12,depth:80},scene));
 world[2].position = new BABYLON.Vector3(0,-25,185);
 world[2].material = mats[2];
+world[2].isPickable = false;
 
 function worldBeforeFrame(){
   world[1].position=new BABYLON.Vector3(0,-14.95,123.7);

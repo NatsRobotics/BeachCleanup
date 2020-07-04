@@ -6,6 +6,14 @@ engine.runRenderLoop(function () {
   worldBeforeFrame();
   ray.origin = firstPersonCamera.position;
   ray.direction = firstPersonCamera.getDirection(new BABYLON.Vector3(0,0,1));
+  if(controls.click){
+    let cast = scene.pickWithRay(ray);
+    if(cast.distance>0){
+      score++;
+      cast.pickedMesh.dispose();
+      document.getElementById('score').textContent = 'Score: '+score;
+    }
+  }
   firstPersonCamera.position.x = player.position.x;
   firstPersonCamera.position.y = player.position.y+0.8;
   firstPersonCamera.position.z = player.position.z;

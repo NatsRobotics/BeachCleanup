@@ -18,7 +18,7 @@ var keybinds = {
   'D':'right',
   ' ':'jump',
   'Shift':'sprint',
-  'mouse':'click'
+  'mouse1':'click'
 };
 
 var onGround = false;
