@@ -1,10 +1,14 @@
 var deceleration = 0.9;
 var maxSpeed = 10;
 var jumpPower = 5;
+var ray = new BABYLON.Ray(new BABYLON.Vector3(0,1,0),new BABYLON.Vector3(0,1,0),10);
 engine.runRenderLoop(function () {
-    firstPersonCamera.position.x = player.position.x;
-    firstPersonCamera.position.y = player.position.y+0.8;
-    firstPersonCamera.position.z = player.position.z;
+  worldBeforeFrame();
+  ray.origin = firstPersonCamera.position;
+  ray.direction = firstPersonCamera.getDirection(new BABYLON.Vector3(0,0,1));
+  firstPersonCamera.position.x = player.position.x;
+  firstPersonCamera.position.y = player.position.y+0.8;
+  firstPersonCamera.position.z = player.position.z;
   jumpCheck.position.x = player.position.x;
   jumpCheck.position.y = player.position.y-1.1;
   jumpCheck.position.z = player.position.z;
