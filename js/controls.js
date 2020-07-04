@@ -5,6 +5,7 @@ var controls = {
   right:false,
   jump:false,
   sprint:false,
+  click:false
 };
 var keybinds = {
   'w':'forwards',
@@ -16,7 +17,8 @@ var keybinds = {
   'A':'left',
   'D':'right',
   ' ':'jump',
-  'Shift':'sprint'
+  'Shift':'sprint',
+  'mouse':'click'
 };
 
 var onGround = false;
@@ -29,6 +31,14 @@ document.onkeydown = function(e){
 document.onkeyup = function(e){
   if(keybinds[e.key])
     controls[keybinds[e.key]] = false;
+}
+document.onmousedown = function(e){
+  if(keybinds['mouse'+e.which])
+    controls[keybinds['mouse'+e.which]] = true;
+}
+document.onmouseup = function(e){
+  if(keybinds['mouse'+e.which])
+    controls[keybinds['mouse'+e.which]] = false;
 }
 canvas.oncontextmenu = function(){
   canvas.requestPointerLock();

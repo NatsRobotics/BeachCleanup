@@ -3,6 +3,7 @@ var engine = new BABYLON.Engine(canvas, true);
 var scene = new BABYLON.Scene(engine);
 var gravityVector = new BABYLON.Vector3(0,-9.81, 0);
 var physicsPlugin = new BABYLON.CannonJSPlugin();
+var score = 0;
 scene.enablePhysics(gravityVector, physicsPlugin);
 scene.clearColor=new BABYLON.Color3(0,0.5,0.9);
 scene.ambientColor = new BABYLON.Color3(0.5,0.5,0.5);
