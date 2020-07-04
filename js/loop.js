@@ -63,6 +63,14 @@ engine.runRenderLoop(function () {
     xvel*=deceleration;
     zvel*=deceleration;
   }
+  if(player.intersectsMesh(world[2])){
+    xvel*=0.5;
+    yvel*=0.9;
+    zvel*=0.5;
+    if(controls.jump){
+      yvel+=1;
+    }
+  }
   let s = maxSpeed;
   if(controls.sprint)s*=1.5
   if(xvel*xvel+zvel*zvel>s*s){
@@ -71,6 +79,21 @@ engine.runRenderLoop(function () {
     zvel*=s*f;
   }
   player.physicsImpostor.setLinearVelocity(new BABYLON.Vector3(xvel,yvel,zvel));
+  garbage.forEach((g)=>{
+    if(g.intersectsMesh(world[2])){
+      let vel = g.physicsImpostor.getLinearVelocity();
+      vel.x*=0.8;
+      vel.y*=0.8;
+      vel.z*=0.8;
+      vel.y+=-(g.position.y*0.1)-1.8;
+      g.physicsImpostor.setLinearVelocity(vel);
+      let aVel = g.physicsImpostor.getAngularVelocity();
+      aVel.x*=0.5;
+      aVel.y*=0.5;
+      aVel.z*=0.5;
+      g.physicsImpostor.setAngularVelocity(aVel);
+    }
+  });
   scene.render();
 });
 window.addEventListener("resize", function () {

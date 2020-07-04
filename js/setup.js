@@ -87,7 +87,7 @@ var garbage=[];
 for(let i=0;i<100;i++){
   garbage.push(new BABYLON.MeshBuilder.CreateBox('garbage',{width:0.5,height:1,depth:0.3},scene));
   let zyPos = Math.random();
-  garbage[i].position = new BABYLON.Vector3(Math.random()*300-150,-zyPos*14.95+1,zyPos*98+25);
+  garbage[i].position = new BABYLON.Vector3(Math.random()*300-150,-zyPos*14.9+1,zyPos*170+25);
   garbage[i].rotation = new BABYLON.Vector3(Math.random(),Math.random(),Math.random());
   garbage[i].physicsImpostor = new BABYLON.PhysicsImpostor(garbage[i],BABYLON.PhysicsImpostor.BoxImpostor,{mass:0.1,restitution:0},scene);
 }
