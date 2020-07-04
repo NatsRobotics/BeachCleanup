@@ -1,8 +1,6 @@
-/*engine.runRenderLoop(function () {
+engine.runRenderLoop(function () {
   scene.render();
 });
 window.addEventListener("resize", function () {
   engine.resize();
 });
-*/
-alert('loop');
