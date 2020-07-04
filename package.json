@@ -1,0 +1,22 @@
+{
+  "name": "beachcleanup",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NatsRobotics/BeachCleanup.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NatsRobotics/BeachCleanup/issues"
+  },
+  "homepage": "https://github.com/NatsRobotics/BeachCleanup#readme",
+  "dependencies": {
+    "express.js": "^1.0.0"
+  }
+}
