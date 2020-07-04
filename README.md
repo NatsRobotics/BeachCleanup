@@ -1,7 +1,7 @@
 # BeachCleanup
 
-Open index.html to run
-Controls:
-WASD to move
-Shift to sprint
-Click on garbage to collect
+Open index.html to run<br>
+Controls:<br>
+-WASD to move<br>
+-Shift to sprint<br>
+-Click on garbage to collect
