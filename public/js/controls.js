@@ -4,13 +4,19 @@ var controls = {
   left:false,
   right:false,
   jump:false,
+  sprint:false,
 };
 var keybinds = {
   'w':'forwards',
   's':'backwards',
   'a':'left',
   'd':'right',
-  ' ':'jump'
+  'W':'forwards',
+  'S':'backwards',
+  'A':'left',
+  'D':'right',
+  ' ':'jump',
+  'Shift':'sprint'
 };
 
 var onGround = false;

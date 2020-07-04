@@ -27,6 +27,7 @@ engine.runRenderLoop(function () {
     onGroundCheckTimer--;
   player.rotation.y = firstPersonCamera.rotation.y;
   var forwards = {x:Math.cos(player.rotation.y)*5,z:Math.sin(player.rotation.y)*5};
+
   let movement = false;
   if(controls.forwards){
     player.applyImpulse(new BABYLON.Vector3(forwards.z,0,forwards.x), new BABYLON.Vector3(0,1,0));
@@ -54,10 +55,12 @@ engine.runRenderLoop(function () {
     xvel*=deceleration;
     zvel*=deceleration;
   }
-  if(xvel*xvel+zvel*zvel>maxSpeed*maxSpeed){
+  let s = maxSpeed;
+  if(controls.sprint)s*=1.5
+  if(xvel*xvel+zvel*zvel>s*s){
     let f = fisqrt(xvel*xvel+zvel*zvel);
-    xvel*=maxSpeed*f;
-    zvel*=maxSpeed*f;
+    xvel*=s*f;
+    zvel*=s*f;
   }
   player.physicsImpostor.setLinearVelocity(new BABYLON.Vector3(xvel,yvel,zvel));
   scene.render();
