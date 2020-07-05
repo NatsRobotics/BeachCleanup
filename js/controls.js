@@ -51,6 +51,7 @@ canvas.oncontextmenu = function(){
 function pause(){
   if(!paused){
     paused=true;
+    engine.stopRenderLoop();
     document.getElementById('game').style.display='none';
     document.exitPointerLock();
     document.getElementById('pause').style.display='block';
@@ -59,6 +60,7 @@ function pause(){
 function unpause(){
   if(paused){
     paused=false;
+    engine.runRenderLoop(renderLoop);
     document.getElementById('game').style.display='block';
     canvas.requestPointerLock();
     document.getElementById('pause').style.display='none';

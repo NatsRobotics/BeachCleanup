@@ -6,22 +6,21 @@
   </head>
   <body style='margin:0;width:100%;height:100%;font-family:arial'>
     <div id='game'>
-      <h2 id='score' style='position:absolute;top:0;left:2%;font-size:2vh;z-index:1'>Score: 0</h2>
+      <h2 id='score' style='position:absolute;top:1vh;left:2%;font-size:2vh;z-index:1'>Score: 0</h2>
       <h2 id='coins' style='position:absolute;top:2.2vh;left:2%;font-size:2vh;z-index:1'>Coins: $0</h2>
       <h2 id='trash' style='position:absolute;top:4.4vh;left:2%;font-size:2vh;z-index:1'>Trash: 0/10</h2>
       <img src='img/crosshair.png'style='position: fixed;top: 50%;left: 50%;width:1%;transform: translate(-50%, -50%);z-index:1'></img>
-      <canvas id="canvas" style='width:100%;height:100%;position:absolute;top:0;left:0'></canvas>
+      <canvas id="canvas" style='width:100%;height:100%;position:absolute;top:0;right:0'></canvas>
     </div>
-    <div id='pause' style='display:none;width:100%;height:100%;font-size:2vh;font-family:arial'>
+    <div id='pause' style='width:100%;height:100%;font-size:2vh;font-family:arial;z-index:2;background-color:#ffff;display:none'>
       <div>
-        <a href='' onclick='unpause()'>Back</a>
+        <a onclick='unpause()' style='position:absolute;left:2%;top:1%'>Back</a>
         <div id='upgrades' style='width:80%'></div>
       </div>
     </div>
   </body>
   <script src="https://cdn.babylonjs.com/babylon.js"></script>
   <script src='https://cdn.babylonjs.com/cannon.js'></script>
-  <script src='https://raw.githubusercontent.com/CraigFeldspar/BabylonCSG/master/BabylonCSG.js'></script>
   <script src='js/setup.js'></script>
   <script src='js/controls.js'></script>
   <script src='js/loop.js'></script>
