@@ -68,23 +68,27 @@ mats[0].ambientColor = new BABYLON.Color3(0.3,0.3,0.3);
 mats[0].diffuseColor = new BABYLON.Color3(0.5,0.5,0.5);
 mats[0].diffuseTexture = new BABYLON.Texture('img/textures/road_COLOR.jpg',scene);
 mats[0].bumpTexture = new BABYLON.Texture('img/textures/road_Normal.jpg',scene);
+mats[0].bumpTexture.uScale = 5;
+mats[0].bumpTexture.vScale = 1;
+mats[0].diffuseTexture.uScale = 5;
+mats[0].diffuseTexture.vScale = 1;
 //sand
 mats[1].ambientColor = new BABYLON.Color3(0.5,0.5,0.5);
 mats[1].diffuseColor = new BABYLON.Color3(1,1,1);
 mats[1].diffuseTexture = new BABYLON.Texture('img/textures/sand_COLOR.png',scene);
 mats[1].bumpTexture = new BABYLON.Texture('img/textures/sand_Normal.png',scene);
-mats[1].bumpTexture.uScale = 5;
-mats[1].bumpTexture.vScale = 2.5;
-mats[1].diffuseTexture.uScale = 5;
-mats[1].diffuseTexture.vScale = 2.5;
+mats[1].bumpTexture.uScale = 10;
+mats[1].bumpTexture.vScale = 5;
+mats[1].diffuseTexture.uScale = 10;
+mats[1].diffuseTexture.vScale = 5;
 //water
 mats[2].diffuseColor = new BABYLON.Color3(0,0.3,0.6);
 mats[2].specularColor = new BABYLON.Color3(0.1,0.3,0.3);
 eval("mats[2].bumpTexture = new BABYLON.Texture('img/textures/water_Normal.jpg',scene);");
 mats[2].alpha = 0.5;
 mats[2].backFaceCulling = false;
-mats[2].bumpTexture.uScale = 5;
-mats[2].bumpTexture.vScale = 2.5;
+mats[2].bumpTexture.uScale = 2;
+mats[2].bumpTexture.vScale = 10;
 //bins
 mats[3].ambientColor = new BABYLON.Color3(0,0.1,0.4);
 mats[3].diffuseColor = new BABYLON.Color3(0,0.3,0.8);
