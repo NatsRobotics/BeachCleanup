@@ -66,6 +66,8 @@ for(let i=0;i<=4;i++){
 //road
 mats[0].ambientColor = new BABYLON.Color3(0.3,0.3,0.3);
 mats[0].diffuseColor = new BABYLON.Color3(0.5,0.5,0.5);
+mats[0].diffuseTexture = new BABYLON.Texture('img/textures/road_COLOR.jpg',scene);
+mats[0].bumpTexture = new BABYLON.Texture('img/textures/road_Normal.jpg',scene);
 //sand
 mats[1].ambientColor = new BABYLON.Color3(0.5,0.5,0.5);
 mats[1].diffuseColor = new BABYLON.Color3(1,1,1);
