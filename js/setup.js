@@ -118,6 +118,24 @@ grounds.push(world[0]);
 grounds.push(world[1]);
 
 var bins = [];
+if(true){
+  let a = new BABYLON.MeshBuilder.CreateBox("dummya",{height:1,width:2,depth:1.5},scene);
+  let b = new BABYLON.MeshBuilder.CreateBox("dummyb",{height:0.9,width:1.8,depth:1.3},scene);
+  a.position.y-=0.1;
+  let aCSG = BABYLON.CSG.FromMesh(a);
+  let bCSG = BABYLON.CSG.FromMesh(b);
+  let binCSG = aCSG.subtract(bCSG);
+  bin.push([]);
+  for(let i=0;i<5;i++){
+    bins.push(binCSG.toMesh("bin",materials[3],scene));
+    bins[i].position.z=-20;
+    bins[i].position.y=0.5;
+    bins[i].rotation.y=Math.PI/2;
+    bins[i].position.x=i*10-25
+  }
+  a.dispose();
+  b.dispose();
+}
 bins.push(BABYLON.MeshBuilder.CreateBox('bin',{},scene));
 bins[0].position = new BABYLON.Vector3(0,0.5,-20);
 
