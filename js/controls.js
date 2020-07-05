@@ -5,7 +5,8 @@ var controls = {
   right:false,
   jump:false,
   sprint:false,
-  click:false
+  click:false,
+  pause:false
 };
 var keybinds = {
   'w':'forwards',
@@ -18,7 +19,7 @@ var keybinds = {
   'D':'right',
   ' ':'jump',
   'Shift':'sprint',
-  'mouse1':'click'
+  'mouse1':'click',
 };
 
 var onGround = false;
@@ -27,6 +28,9 @@ var onGroundCheckTimer = 0;
 document.onkeydown = function(e){
   if(keybinds[e.key])
     controls[keybinds[e.key]] = true;
+  if(e.key==='p' || e.key==='P'){
+    pause();
+  }
 }
 document.onkeyup = function(e){
   if(keybinds[e.key])
@@ -43,4 +47,20 @@ document.onmouseup = function(e){
 canvas.oncontextmenu = function(){
   canvas.requestPointerLock();
   return false;
+}
+function pause(){
+  if(!paused){
+    paused=true;
+    document.getElementById('game').style.display='none';
+    document.exitPointerLock();
+    document.getElementById('pause').style.display='block';
+  }
+}
+function unpause(){
+  if(paused){
+    paused=false;
+    document.getElementById('game').style.display='block';
+    canvas.requestPointerLock();
+    document.getElementById('pause').style.display='none';
+  }
 }

@@ -4,9 +4,25 @@ var scene = new BABYLON.Scene(engine);
 var gravityVector = new BABYLON.Vector3(0,-9.81, 0);
 var physicsPlugin = new BABYLON.CannonJSPlugin();
 var score = 0;
+var trash = 0;
+var coins = 0;
+var maxTrash = 10;
+var maxSpeed = 10;
+var jumpPower = 5;
+var range = 10;
 scene.enablePhysics(gravityVector, physicsPlugin);
-scene.clearColor=new BABYLON.Color3(0,0.5,0.9);
 scene.ambientColor = new BABYLON.Color3(0.5,0.5,0.5);
+
+//skybox
+var skybox = BABYLON.MeshBuilder.CreateBox("skyBox", {size:1000}, scene);
+var skyboxMaterial = new BABYLON.StandardMaterial("skyBox", scene);
+skyboxMaterial.backFaceCulling = false;
+skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture("img/skybox/bluecloud", scene, ["_ft.jpg", "_up.jpg", "_rt.jpg", "_bk.jpg", "_dn.jpg", "_lf.jpg"]);
+skyboxMaterial.reflectionTexture.coordinatesMode = BABYLON.Texture.SKYBOX_MODE;
+skyboxMaterial.diffuseColor = new BABYLON.Color3(0, 0, 0);
+skyboxMaterial.specularColor = new BABYLON.Color3(0, 0, 0);
+skybox.material = skyboxMaterial;
+
 
 var firstPersonCamera = new BABYLON.UniversalCamera("FirstPersonCamera", new BABYLON.Vector3(0, 0, 0), scene);
 firstPersonCamera.inertia = 0;
@@ -47,14 +63,21 @@ for(let i=0;i<=4;i++){
   mats[i].specularColor = new BABYLON.Color3(0,0,0);
   mats[i].ambientColor = new BABYLON.Color3(0,0,0);
 }
+//road
 mats[0].ambientColor = new BABYLON.Color3(0.3,0.3,0.3);
 mats[0].diffuseColor = new BABYLON.Color3(0.5,0.5,0.5);
+//sand
 mats[1].ambientColor = new BABYLON.Color3(0.5,0.5,0);
 mats[1].diffuseColor = new BABYLON.Color3(1,1,0);
+//water
 mats[2].diffuseColor = new BABYLON.Color3(0,0.3,0.6);
 mats[2].specularColor = new BABYLON.Color3(0.1,0.3,0.3);
 mats[2].alpha = 0.6;
 mats[2].backFaceCulling = false;
+//bins
+mats[3].ambientColor = new BABYLON.Color3(0,0.1,0.4);
+mats[3].diffuseColor = new BABYLON.Color3(0,0.3,0.8);
+mats[3].specularColor = new BABYLON.Color3(0,0.2,0.3);
 
 var sun = new BABYLON.PointLight('sun',new BABYLON.Vector3(0,100,0),scene);
 
@@ -82,6 +105,12 @@ function worldBeforeFrame(){
 var grounds = [];
 grounds.push(world[0]);
 grounds.push(world[1]);
+
+var bins = [];
+bins.push(BABYLON.MeshBuilder.CreateBox('bin',{},scene));
+bins[0].position = new BABYLON.Vector3(0,0.5,-20);
+
+bins.forEach(b=>b.material=mats[3]);
 
 var garbage=[];
 for(let i=0;i<100;i++){
