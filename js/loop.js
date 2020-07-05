@@ -104,13 +104,15 @@ function renderLoop() {
       vel.z*=0.8;
       vel.y+=-(g.position.y*0.1)-1.8;
       g.physicsImpostor.setLinearVelocity(vel);
-      let aVel = g.physicsImpostor.getAngularVelocity();
-      aVel.x*=0.5;
-      aVel.y*=0.5;
-      aVel.z*=0.5;
-      aVel.x-=g.rotationQuaternion.x*0.1;
-      aVel.z-=g.rotationQuaternion.z*0.1;
-      g.physicsImpostor.setAngularVelocity(aVel);
+      if(g.hasPreferedRotation){
+        let aVel = g.physicsImpostor.getAngularVelocity();
+        aVel.x*=0.5;
+        aVel.y*=0.5;
+        aVel.z*=0.5;
+        aVel.x-=g.rotationQuaternion.x*0.1;
+        aVel.z-=g.rotationQuaternion.z*0.1;
+        g.physicsImpostor.setAngularVelocity(aVel);
+      }
     }
   });
   scene.render();

@@ -56,7 +56,7 @@ jumpCheck.visibility = 0;
 jumpCheck.isPickable = false;
 
 var mats = [];
-for(let i=0;i<=4;i++){
+for(let i=0;i<=3;i++){
   mats.push(new BABYLON.StandardMaterial('mat',scene));
   mats[i].emissiveColor = new BABYLON.Color3(0,0,0);
   mats[i].diffuseColor = new BABYLON.Color3(0,0,0);
@@ -123,13 +123,38 @@ bins[0].position = new BABYLON.Vector3(0,0.5,-20);
 
 bins.forEach(b=>b.material=mats[3]);
 
+var garbageColors = [];
+garbageColors.push([
+  new BABYLON.Color3(0.7,0.2,0.2),
+  new BABYLON.Color3(0.8,0.8,0.8),
+  new BABYLON.Color3(1,1,1),
+  new BABYLON.Color3(0.5,0.2,0.2),
+  new BABYLON.Color3(0.6,0.2,0.2),
+  new BABYLON.Color3(0.2,0.1,0.1),
+]);
+garbageColors.push([
+  new BABYLON.Color3(0.7,0.7,0.7),
+  new BABYLON.Color3(0.8,0.2,0.2),
+  new BABYLON.Color3(0.6,0.6,0.6),
+]);
+
 var garbage=[];
 for(let i=0;i<100;i++){
-  garbage.push(new BABYLON.MeshBuilder.CreateBox('garbage',{width:0.5,height:0.3,depth:1},scene));
-  let zyPos = Math.random();
-  garbage[i].position = new BABYLON.Vector3(Math.random()*300-150,-zyPos*14.9+1,zyPos*170+25);
-  garbage[i].rotation = new BABYLON.Vector3(Math.random(),Math.random(),Math.random());
-  garbage[i].physicsImpostor = new BABYLON.PhysicsImpostor(garbage[i],BABYLON.PhysicsImpostor.BoxImpostor,{mass:0.1,restitution:0},scene);
+  if(Math.floor(Math.random()*2)==0){
+    garbage.push(new BABYLON.MeshBuilder.CreateBox('garbage',{width:0.5,height:0.3,depth:1,faceColors:garbageColors[0]},scene));
+    let zyPos = Math.random();
+    garbage[i].position = new BABYLON.Vector3(Math.random()*300-150,-zyPos*14.9+1,zyPos*170+25);
+    garbage[i].rotation = new BABYLON.Vector3(Math.random(),Math.random(),Math.random());
+    garbage[i].physicsImpostor = new BABYLON.PhysicsImpostor(garbage[i],BABYLON.PhysicsImpostor.BoxImpostor,{mass:0.1,restitution:0},scene);
+    garbage[i].hasPreferedRotation = true;
+  }else{
+    garbage.push(new BABYLON.MeshBuilder.CreateCylinder('garbage',{height:1,diameter:0.5,faceColors:garbageColors[1]},scene));
+    let zyPos = Math.random();
+    garbage[i].position = new BABYLON.Vector3(Math.random()*300-150,-zyPos*14.9+1,zyPos*170+25);
+    garbage[i].rotation = new BABYLON.Vector3(Math.random(),Math.random(),Math.random());
+    garbage[i].physicsImpostor = new BABYLON.PhysicsImpostor(garbage[i],BABYLON.PhysicsImpostor.CylinderImpostor,{mass:0.1,restitution:0},scene);
+    garbage[i].hasPreferedRotation = false;
+  }
 }
 
 
