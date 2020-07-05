@@ -15,13 +15,19 @@
     <div id='pause' style='width:100%;height:100%;font-size:2vh;font-family:arial;z-index:2;background-color:#ffff;display:none'>
       <div>
         <a onclick='unpause()' style='position:absolute;left:2%;top:1%'>Back</a>
-        <div id='upgrades' style='position:absolute;left:10%;top:10%;width:80%;height:80%;border:1px solid;background:#0fa2'>
+        <div id='upgrades' style='position:absolute;left:10%;top:10%;width:30%;height:80%;border:1px solid;background:#0fa2'>
           <h2>Upgrades</h2>
           <h3 id='rangeDisplay'>Range (5/20)</h3>
           <button id='rangeUpgrade' onclick='upgrade("range");'>$10</button>
+          <h3 id='storageDisplay'>Speed (10/20)</h3>
+          <button id='speedUpgrade' onclick='upgrade("speed");'>$15</button>
+          <h3 id='speedDisplay'>Storage (10/100)</h3>
+          <button id='storageUpgrade' onclick='upgrade("storage");'>$5</button>
           <script>
             var upgradeCosts = {
-              range:10
+              range:10,
+              speed:15,
+              storage:5,
             };
             function upgrade(u){
               if(coins>=upgradeCosts[u]){
@@ -40,7 +46,29 @@
                     }
                     break;
                   case 'speed':
+                    if(maxSpeed<20){
+                      maxSpeed++;
+                      coins-=upgradeCosts.speed;
+                      upgradeCosts.speed=Math.ceil(upgradeCosts.speed*1.2);
+                      document.getElementById("speedDisplay").textContent = "Speed ("+maxSpeed+'/20)';
+                      if(maxSpeed<20)
+                        document.getElementById('speedUpgrade').textContent = '$'+upgradeCosts.speed;
+                      else
+                        document.getElementById('speedUpgrade').textContent = 'Max';
+                    }
                     break;
+                  case 'storage':
+                    if(maxTrash<100){
+                      maxTrash++;
+                      coins-=upgradeCosts.storage;
+                      upgradeCosts.storage=Math.ceil(upgradeCosts.storage*1.1);
+                      document.getElementById("storageDisplay").textContent = "Storage ("+maxSpeed+'/100)';
+                      if(maxTrash<100)
+                        document.getElementById('storageUpgrade').textContent = '$'+upgradeCosts.storage;
+                        else
+                        document.getElementById('storageUpgrade').textContent = 'Max';
+                      }
+                      break;
                 }
               }
             }

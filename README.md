@@ -4,4 +4,5 @@ Open index.html to run, or go to https://natsrobotics.github.io/BeachCleanup/ (M
 Controls:<br>
 -WASD to move<br>
 -Shift to sprint<br>
--Click on garbage to collect
+-Click on garbage to collect<br>
+-p to pause/buy upgrades
