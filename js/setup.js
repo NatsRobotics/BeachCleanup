@@ -125,19 +125,17 @@ if(true){
   let aCSG = BABYLON.CSG.FromMesh(a);
   let bCSG = BABYLON.CSG.FromMesh(b);
   let binCSG = aCSG.subtract(bCSG);
-  bin.push([]);
-  for(let i=0;i<5;i++){
-    bins.push(binCSG.toMesh("bin",materials[3],scene));
+  for(let i=0;i<7;i++){
+    bins.push(binCSG.toMesh("bin",mats[3],scene));
     bins[i].position.z=-20;
     bins[i].position.y=0.5;
     bins[i].rotation.y=Math.PI/2;
-    bins[i].position.x=i*10-25
+    bins[i].position.x=i*30-90;
+    bins[i].physicsImpostor = new BABYLON.PhysicsImpostor(bins[i],BABYLON.PhysicsImpostor.BoxImpostor,{mass:25,restitution:0,friction:0.1},scene);
   }
   a.dispose();
   b.dispose();
 }
-bins.push(BABYLON.MeshBuilder.CreateBox('bin',{},scene));
-bins[0].position = new BABYLON.Vector3(0,0.5,-20);
 
 bins.forEach(b=>b.material=mats[3]);
 
