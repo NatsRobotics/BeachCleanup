@@ -62,7 +62,7 @@
                       maxTrash++;
                       coins-=upgradeCosts.storage;
                       upgradeCosts.storage=Math.ceil(upgradeCosts.storage*1.1);
-                      document.getElementById("storageDisplay").textContent = "Storage ("+maxSpeed+'/100)';
+                      document.getElementById("storageDisplay").textContent = "Storage ("+maxTrash+'/100)';
                       if(maxTrash<100)
                         document.getElementById('storageUpgrade').textContent = '$'+upgradeCosts.storage;
                         else
