@@ -9,7 +9,7 @@ var coins = 0;
 var maxTrash = 10;
 var maxSpeed = 10;
 var jumpPower = 5;
-var range = 10;
+var range = 5;
 scene.enablePhysics(gravityVector, physicsPlugin);
 scene.ambientColor = new BABYLON.Color3(0.5,0.5,0.5);
 
