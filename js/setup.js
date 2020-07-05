@@ -78,7 +78,7 @@ mats[1].diffuseTexture.vScale = 0.025;
 //water
 mats[2].diffuseColor = new BABYLON.Color3(0,0.3,0.6);
 mats[2].specularColor = new BABYLON.Color3(0.1,0.3,0.3);
-mats[2].bumpTexture = new BABYLON.Texture('img/textures/water_Normal.jpg',scene);
+eval("mats[2].bumpTexture = new BABYLON.Texture('img/textures/water_Normal.jpg',scene);");
 mats[2].alpha = 0.5;
 mats[2].backFaceCulling = false;
 mats[2].bumpTexture.uScale = 0.05;
