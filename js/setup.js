@@ -67,14 +67,15 @@ for(let i=0;i<=4;i++){
 mats[0].ambientColor = new BABYLON.Color3(0.3,0.3,0.3);
 mats[0].diffuseColor = new BABYLON.Color3(0.5,0.5,0.5);
 //sand
-mats[1].ambientColor = new BABYLON.Color3(0.5,0.5,0);
-mats[1].diffuseColor = new BABYLON.Color3(1,1,0);
-mats[1].diffuseTexture = new BABYLON.Texture('img/textures/sand_Normal.png',scene);
-mats[1].bumpTexture = new BABYLON.Texture('img/textures/sand_COLOR.png',scene);
+mats[1].ambientColor = new BABYLON.Color3(0.5,0.5,0.5);
+mats[1].diffuseColor = new BABYLON.Color3(1,1,1);
+mats[1].diffuseTexture = new BABYLON.Texture('img/textures/sand_COLOR.png',scene);
+mats[1].bumpTexture = new BABYLON.Texture('img/textures/sand_Normal.png',scene);
 //water
 mats[2].diffuseColor = new BABYLON.Color3(0,0.3,0.6);
 mats[2].specularColor = new BABYLON.Color3(0.1,0.3,0.3);
-mats[2].alpha = 0.6;
+mats[2].bumpTexture = new BABYLON.Texture('img/textures/water_Normal.png',scene);
+mats[2].alpha = 0.5;
 mats[2].backFaceCulling = false;
 //bins
 mats[3].ambientColor = new BABYLON.Color3(0,0.1,0.4);
