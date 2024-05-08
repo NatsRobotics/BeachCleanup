@@ -6,3 +6,5 @@ Controls:<br>
 -Shift to sprint<br>
 -Click on garbage to collect<br>
 -p to pause/buy upgrades
+
+Credits to my partner for working on this project with me.
